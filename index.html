@@ -11,14 +11,19 @@
       font-family: 'Share Tech Mono', monospace;
       font-size: 20px;
       padding: 30px;
+      overflow: hidden;
+      position: relative;
     }
+
     #console::after {
       content: "_";
       animation: blink 1s infinite steps(1);
     }
+
     @keyframes blink {
       50% { opacity: 0; }
     }
+
     #supplyButton {
       display: none;
       margin-top: 30px;
@@ -31,25 +36,53 @@
       cursor: pointer;
       box-shadow: 0 0 10px #33ff33;
     }
+
     #supplyButton:hover {
       background-color: #28cc28;
+    }
+
+    /* 🔧 SCAN EFFECT */
+    .scanner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent 0%, rgba(0, 255, 100, 0.1) 50%, transparent 100%);
+      animation: scan 4s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes scan {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
     }
   </style>
 </head>
 <body>
-  <div id="console"></div>
-  <button id="supplyButton" onclick="location.href='https://www.militarylasertech.com/catalog/produse-36'">
-    ENTER FOR SUPPLY
-  </button>
+  <div class="scanner"></div>
+
+  <div class="content">
+    <div id="console"></div>
+    <button id="supplyButton" onclick="location.href='https://www.militarylasertech.com/catalog/produse-36'">
+      ENTER FOR SUPPLY
+    </button>
+  </div>
 
   <script>
     const lines = [
-      ">> MILITARY LASER TECH – PRECISION UNDER COMMAND",
-      ">> ENGAGE: INDUSTRIAL LASER OPERATIONS MODE",
-      ">> ADVANCED ROBOTIC WELDING SYSTEM: ONLINE",
-      ">> CNC PRECISION CUTTING SYSTEM: STANDBY",
-      ">> INDUSTRIAL LASER WELDING MACHINE: READY",
-      ">> SYSTEM STATUS: STABLE",
+      ">> MILITARY LASER TECH – PRECISION UNDER COMMAND ✓",
+      ">> ENGAGE: INDUSTRIAL LASER OPERATIONS MODE ✓",
+      ">> ADVANCED ROBOTIC WELDING SYSTEM: ONLINE ✓",
+      ">> CNC PRECISION CUTTING SYSTEM: STANDBY ✓",
+      ">> INDUSTRIAL LASER WELDING MACHINE: READY ✓",
+      ">> SYSTEM STATUS: STABLE ✓",
       ">> AWAITING COMMAND...",
       ">> PRESS ENTER FOR SUPPLY"
     ];
